@@ -1,0 +1,2 @@
+class AlbunsController < ApplicationController
+end
