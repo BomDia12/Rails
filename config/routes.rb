@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   root 'application#homepage'
 
+  resources :songs, :albuns, :musical_genders, :musicians
 end

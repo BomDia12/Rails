@@ -1,0 +1,14 @@
+<h1> Novo Músico </h1>
+
+<%= form_with model: @musician do |new| %>
+  <div class="field">
+    <%= new.label :name, 'Nome' %>
+    <%= new.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= new.submit 'Criar músico' %>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar', musicians_path %>
