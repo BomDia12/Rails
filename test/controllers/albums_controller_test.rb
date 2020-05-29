@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AlbunsControllerTest < ActionDispatch::IntegrationTest
+class AlbumsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

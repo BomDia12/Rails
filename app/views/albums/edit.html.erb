@@ -1,0 +1,19 @@
+<h1> Novo álbum </h1>
+
+<%= form_with model: @album do |new| %>
+  <div class="field">
+    <%= new.label :name, 'Nome' %>
+    <%= new.text_field :name, value: @album.name %>
+  </div>
+
+  <div class="field">
+    <%= new.label :musician_id, 'Artista' %>
+    <%= new.select :musician_id, options_for_select(@musicians.map{ |musician| [musician.name, musician.id]}, @album.musician_id) %>
+  </div>
+
+  <div class="actions">
+    <%= new.submit 'Editar album' %>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar', albums_path %>
