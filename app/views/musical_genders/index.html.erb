@@ -1,0 +1,23 @@
+<h1> Gêneros musicais </h1>
+
+<table>
+  <thead>
+  <tr>
+    <th> Nome </th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @musical_genders.each do |gender| %>
+    <tr>
+      <td><%= gender.name %></td>
+      <td><%= link_to 'Editar', edit_musical_gender_path(gender) %></td>
+      <td><%= link_to 'Deletar', musical_gender_path(gender), method: :delete, data: {confirm: 'Wow, pop-ups sure are a lot of fun!'} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Novo Gênero', new_musical_gender_path %>
+<%= link_to 'Voltar', root_path %>
