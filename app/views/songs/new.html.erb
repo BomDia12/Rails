@@ -1,0 +1,29 @@
+<h1> Nova música </h1>
+
+<%= form_with model: @song do |new| %>
+  <div class="field">
+    <%= new.label :name, 'Nome' %>
+    <%= new.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= new.label :explicit, 'Explícita?' %>
+    <%= new.check_box :explicit %>
+  </div>
+
+  <div class="field">
+    <%= new.label :album_id, 'Álbum' %>
+    <%= new.select :album_id, options_for_select(@albums.map{ |album| [album.name, album.id] }) %>
+  </div>
+
+  <div class="field">
+    <%= new.label :musical_gender_id, 'Gênero musical' %>
+    <%= new.select :musical_gender_id, options_for_select(@genders.map{ |gender| [gender.name, gender.id] }) %>
+  </div>
+
+  <div class="actions">
+    <%= new.submit 'Criar música' %>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar', songs_path %>

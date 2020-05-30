@@ -1,0 +1,31 @@
+<h1> Músicas Salvas </h1>
+
+<table>
+  <thead>
+  <tr>
+    <th> Nome </th>
+    <th> Álbum </th>
+    <th> Gênero musical </th>
+    <th> Artista </th>
+    <th> Explícita </th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @songs.each do |song| %>
+  <tr>
+    <td><%= song.name %></td>
+    <td><%= song.album.name %></td>
+    <td><%= song.musical_gender.name %></td>
+    <td><%= song.album.musician.name %></td>
+    <td><%= song.explicit %></td>
+    <td><%= link_to 'Editar', edit_song_path(song) %></td>
+    <td><%= link_to 'Deletar', song_path(song), method:  :delete, data: {confirm: 'Hell, I love pop-ups!'} %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Nova música', new_song_path %>
+<%= link_to 'Voltar', root_path %>
