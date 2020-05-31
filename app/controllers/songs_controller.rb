@@ -19,7 +19,7 @@ class SongsController < ApplicationController
     song = Song.new(song_args)
     begin
       song.save!
-      flash[:notice] = "A música #{song} foi adicionada com sucesso"
+      flash[:notice] = "A música #{song.name} foi adicionada com sucesso"
       redirect_to songs_path
     rescue => err
       flash[:notice] = err
@@ -31,7 +31,7 @@ class SongsController < ApplicationController
     song = Song.find(params[:id])
     begin
       song.update!(song_args)
-      flash[:notice] = "A música #{song} foi editada com sucesso"
+      flash[:notice] = "A música #{song.name} foi editada com sucesso"
       redirect_to songs_path
     rescue
       flash[:notice] = 'Algo deu errado'

@@ -17,7 +17,7 @@ class AlbumsController < ApplicationController
     album = Album.find(params[:id])
     begin
       album.update!(album_args)
-      flash[:notice] = "O álbum #{album} foi editado com sucesso!"
+      flash[:notice] = "O álbum #{album.name} foi editado com sucesso!"
       redirect_to albums_path
     rescue
       flash[:notice] = 'Algo deu errado'
@@ -29,7 +29,7 @@ class AlbumsController < ApplicationController
     album = Album.new(album_args)
     begin
       album.save!
-      flash[:notice] = "O álbum #{album} foi adicionado com sucesso"
+      flash[:notice] = "O álbum #{album.name} foi adicionado com sucesso"
       redirect_to albums_path
     rescue
       flash[:notice] = "Algo deu errado!"

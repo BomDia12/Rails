@@ -16,7 +16,7 @@ class MusiciansController < ApplicationController
     musician = Musician.new(musician_args)
     begin
       musician.save!
-      flash[:notice] = "O músico #{musician} foi adicionado com sucesso!"
+      flash[:notice] = "Artista #{musician.name} foi adicionado com sucesso!"
       redirect_to musicians_path
     rescue => fail
       flash[:notice] = fail
@@ -28,8 +28,7 @@ class MusiciansController < ApplicationController
     musician = Musician.find(params[:id])
     begin
       musician.update!(musician_args)
-      flash[:alert] = "Músico #{musician} editado com sucesso"
-      redirect_to musicians_path
+      redirect_to musicians_path, notice: "Artista #{musician.name} editado com sucesso"
     rescue
       flash[:alert] = "Algo deu errado!"
       redirect_to edit_musician_path
@@ -40,7 +39,7 @@ class MusiciansController < ApplicationController
     musician = Musician.find(params[:id].tr(':',''))
     begin
       musician.destroy!
-      flash[:status] = "O músico #{musician} foi deletado com sucesso"
+      flash[:status] = "O artista foi deletado com sucesso"
     rescue
       flash[:status] = "Algo deu errado"
     ensure
