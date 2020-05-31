@@ -19,10 +19,10 @@ class SongsController < ApplicationController
     song = Song.new(song_args)
     begin
       song.save!
-      flash[:status] = "A música #{song} foi adicionada com sucesso"
+      flash[:notice] = "A música #{song} foi adicionada com sucesso"
       redirect_to songs_path
-    rescue
-      flash[:status] = 'Algo deu errado'
+    rescue => err
+      flash[:notice] = err
       redirect_to new_song_path
     end
   end
@@ -31,10 +31,10 @@ class SongsController < ApplicationController
     song = Song.find(params[:id])
     begin
       song.update!(song_args)
-      flash[:status] = "A música #{song} foi editada com sucesso"
+      flash[:notice] = "A música #{song} foi editada com sucesso"
       redirect_to songs_path
     rescue
-      flash[:status] = 'Algo deu errado'
+      flash[:notice] = 'Algo deu errado'
       redirect_to edit_song_path
     end
   end
@@ -43,9 +43,9 @@ class SongsController < ApplicationController
     song = Song.find(params[:id])
     begin
       song.destroy!
-      flash[:status] = 'Música deletada com sucesso!'
+      flash[:notice] = 'Música deletada com sucesso!'
     rescue
-      flash[:status] = 'Algo deu errado :('
+      flash[:notice] = 'Algo deu errado :('
     ensure
       redirect_to songs_path
     end

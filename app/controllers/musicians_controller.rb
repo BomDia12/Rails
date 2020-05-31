@@ -28,10 +28,10 @@ class MusiciansController < ApplicationController
     musician = Musician.find(params[:id])
     begin
       musician.update!(musician_args)
-      flash[:notice] = "Músico #{musician} editado com sucesso"
+      flash[:alert] = "Músico #{musician} editado com sucesso"
       redirect_to musicians_path
     rescue
-      flash[:notice] = "Algo deu errado!"
+      flash[:alert] = "Algo deu errado!"
       redirect_to edit_musician_path
     end
   end

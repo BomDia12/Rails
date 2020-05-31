@@ -17,10 +17,10 @@ class AlbumsController < ApplicationController
     album = Album.find(params[:id])
     begin
       album.update!(album_args)
-      flash[:status] = "O álbum #{album} foi editado com sucesso!"
+      flash[:notice] = "O álbum #{album} foi editado com sucesso!"
       redirect_to albums_path
     rescue
-      flash[:status] = 'Algo deu errado'
+      flash[:notice] = 'Algo deu errado'
       redirect_to edit_album_path
     end
   end
@@ -41,9 +41,9 @@ class AlbumsController < ApplicationController
     album = Album.find(params[:id])
     begin
       album.destroy!
-      flash[:status] = 'Álbum deletado com sucesso'
+      flash[:notice] = 'Álbum deletado com sucesso'
     rescue
-      flash[:status] = 'Algo deu errado!'
+      flash[:notice] = 'Algo deu errado!'
     ensure
       redirect_to albums_path
     end

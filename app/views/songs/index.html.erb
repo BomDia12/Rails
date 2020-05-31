@@ -19,7 +19,7 @@
     <td><%= song.album.name %></td>
     <td><%= song.musical_gender.name %></td>
     <td><%= song.album.musician.name %></td>
-    <td><%= song.explicit %></td>
+    <td><%= song.explicit.tr('1', 'X').tr('0', '') %></td>
     <td><%= link_to 'Editar', edit_song_path(song) %></td>
     <td><%= link_to 'Deletar', song_path(song), method:  :delete, data: {confirm: 'Hell, I love pop-ups!'} %></td>
   </tr>
