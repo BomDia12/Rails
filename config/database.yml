@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: whyyyyyyy_production
-  username: bomdia
-  password: abacate
+  username: <%= ENV['postgres_user'] %>
+  password: <%= ENV['postgres_password'] %>

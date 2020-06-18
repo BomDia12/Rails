@@ -1,4 +1,12 @@
 <%= flash[:notice] %>
+<script>
+    var heard = function (id) {
+        document.getElementById(id).style.color = "green";
+    }
+    var unheard = function (id) {
+        document.getElementById(id).style.color = "red"
+    }
+</script>
 
 <h1> Álbums salvos </h1>
 
@@ -7,17 +15,33 @@
   <tr>
     <th> Nome </th>
     <th> Artista </th>
-    <th colspan="3"></th>
+    <th colspan="5"></th>
   </tr>
   </thead>
 
   <tbody>
   <% @albums.each do |album| %>
     <tr>
-      <td><%= album.name %></td>
+      <td id="<%= album.id %>"><%= album.name %></td>
       <td><%= album.musician.name %></td>
       <td><%= link_to 'Editar', edit_album_path(album) %></td>
       <td><%= link_to 'Deletar', album_path(album), method: :delete, data: {confirm: 'I guess I can do pop-ups...'} %></td>
+      <td><button id="<%= "heard" << (album.id.to_s) %>"><i class="fas fa-check"></i></button></td>
+      <td><button id="<%= "unheard" << (album.id.to_s) %>"><i class="fas fa-times"></i></button></td>
+      <td><button id="<%= "undo" << (album.id.to_s) %>"><i class="fas fa-undo"></i></button></td>
+      <script>
+        document.getElementById("<%= "heard" << (album.id.to_s) %>").addEventListener('click', function () {
+            document.getElementById("<%= album.id %>").style.color = "green";
+        })
+
+        document.getElementById("<%= "unheard" << (album.id.to_s) %>").addEventListener('click', function () {
+            document.getElementById("<%= album.id %>").style.color = "red";
+        })
+
+        document.getElementById("<%= "undo" << (album.id.to_s) %>").addEventListener('click', function () {
+            document.getElementById("<%= album.id %>").style.color = "black";
+        })
+      </script>
     </tr>
   <% end %>
   </tbody>
@@ -25,3 +49,5 @@
 
 <%= link_to 'Novo álbum', new_album_path %>
 <%= link_to 'Voltar', root_path %>
+
+

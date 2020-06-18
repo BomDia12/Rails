@@ -42,8 +42,8 @@ class AlbumsController < ApplicationController
     begin
       album.destroy!
       flash[:notice] = 'Álbum deletado com sucesso'
-    rescue
-      flash[:notice] = 'Algo deu errado!'
+    rescue => err
+      flash[:notice] = err
     ensure
       redirect_to albums_path
     end
